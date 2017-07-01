@@ -25,4 +25,11 @@ struct PropertyListKeyManager {
         return keys[key]
     }
     
+    func getStringValue(key: String) -> String {
+        guard let value = getValue(key: key) else {
+            return ""
+        }
+        
+        return value as! String
+    }
 }

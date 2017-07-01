@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SlackKit
 
 class AuthViewController: UIViewController,
     WKNavigationDelegate
@@ -15,6 +16,9 @@ class AuthViewController: UIViewController,
     
     let slackApiRequestAuth = "https://slack.com/oauth/authorize?&client_id="
     let extraScope = "&scope=incoming-webhook,emoji:read,users.profile:read,users.profile:write"
+    let mySlackClientID = PropertyListKeyManager().getStringValue(key: "SlackClientID")
+    let mySlackClientSecret = PropertyListKeyManager().getStringValue(key: "SlackClientSecret")
+
     var myAuthWebView: WKWebView!
 
     override func viewDidLoad() {
@@ -41,10 +45,8 @@ class AuthViewController: UIViewController,
         
         setupWebViewConstraint()
         
-        if let mySlackClientID = PropertyListKeyManager().getValue(key: "SlackClientID") as? String {
-            if let url = URL(string: slackApiRequestAuth + "&client_id=" + mySlackClientID + extraScope) {
-                myAuthWebView.load(URLRequest(url: url))
-            }
+        if let url = URL(string: slackApiRequestAuth + "&client_id=" + mySlackClientID + extraScope) {
+            myAuthWebView.load(URLRequest(url: url))
         }
     }
     
@@ -54,5 +56,28 @@ class AuthViewController: UIViewController,
         let leading = NSLayoutConstraint(item: self.view, attribute: .leading, relatedBy: .equal, toItem: myAuthWebView, attribute: .leading, multiplier: 1.0, constant: 0.0)
         let trailing = NSLayoutConstraint(item: self.view, attribute: .trailing, relatedBy: .equal, toItem: myAuthWebView, attribute: .trailing, multiplier: 1.0, constant: 0.0)
         self.view.addConstraints([top, bottom, leading, trailing])
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if let url = webView.url {
+            let urlStr = url.absoluteString
+            
+            if let codeRange = urlStr.range(of: "?code=") {
+                let redirectUrlStr = urlStr.substring(to: codeRange.lowerBound)
+                var code = urlStr.substring(from: codeRange.upperBound)
+                if let stateRange = code.range(of: "&") {
+                    code = code.substring(to: stateRange.lowerBound)
+                }
+                WebAPI.oauthAccess(clientID: mySlackClientID, clientSecret: mySlackClientSecret, code: code, redirectURI: redirectUrlStr, success: { (resultDictionary) in
+                    print(resultDictionary.description)
+                    if let accessToken = resultDictionary["access_token"] as? String {
+                        print(accessToken)
+                    }
+                }, failure: { (slackError) in
+                    print(slackError)
+                })
+                
+            }
+        }
     }
 }
