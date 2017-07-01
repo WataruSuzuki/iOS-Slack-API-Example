@@ -71,7 +71,8 @@ class AuthViewController: UIViewController,
                 WebAPI.oauthAccess(clientID: mySlackClientID, clientSecret: mySlackClientSecret, code: code, redirectURI: redirectUrlStr, success: { (resultDictionary) in
                     print(resultDictionary.description)
                     if let accessToken = resultDictionary["access_token"] as? String {
-                        print(accessToken)
+                        SlackKitHelpers.instance.accessToken = accessToken
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }, failure: { (slackError) in
                     print(slackError)
