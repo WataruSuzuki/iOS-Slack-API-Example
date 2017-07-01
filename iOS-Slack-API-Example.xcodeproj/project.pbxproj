@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		502B201481BF34897AB9DC26 /* Pods_iOS_Slack_API_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD6A27170E95858B3E3167F /* Pods_iOS_Slack_API_Example.framework */; };
 		CC98B3BE1F011095000F661C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC98B3BD1F011095000F661C /* AppDelegate.swift */; };
-		CC98B3C01F011095000F661C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC98B3BF1F011095000F661C /* ViewController.swift */; };
 		CC98B3C31F011095000F661C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC98B3C11F011095000F661C /* Main.storyboard */; };
 		CC98B3C51F011095000F661C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC98B3C41F011095000F661C /* Assets.xcassets */; };
 		CC98B3C81F011095000F661C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC98B3C61F011095000F661C /* LaunchScreen.storyboard */; };
@@ -17,6 +16,8 @@
 		CC98B3DE1F011096000F661C /* iOS_Slack_API_ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC98B3DD1F011096000F661C /* iOS_Slack_API_ExampleUITests.swift */; };
 		CCE8B1BE1F062CB90093B3AD /* MySampleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE8B1BD1F062CB90093B3AD /* MySampleListViewController.swift */; };
 		CCE8B1C11F062D520093B3AD /* SampleMenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE8B1C01F062D520093B3AD /* SampleMenuList.swift */; };
+		CCE8B1C31F063C9E0093B3AD /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE8B1C21F063C9E0093B3AD /* AuthViewController.swift */; };
+		CCE8B1C51F063E260093B3AD /* PropertyListKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE8B1C41F063E260093B3AD /* PropertyListKeyManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +43,6 @@
 		A6848244BD52E98DC9876336 /* Pods-iOS-Slack-API-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Slack-API-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Slack-API-Example/Pods-iOS-Slack-API-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CC98B3BA1F011095000F661C /* iOS-Slack-API-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Slack-API-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC98B3BD1F011095000F661C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CC98B3BF1F011095000F661C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CC98B3C21F011095000F661C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC98B3C41F011095000F661C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC98B3C71F011095000F661C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,6 +55,8 @@
 		CC98B3DF1F011096000F661C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCE8B1BD1F062CB90093B3AD /* MySampleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySampleListViewController.swift; sourceTree = "<group>"; };
 		CCE8B1C01F062D520093B3AD /* SampleMenuList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleMenuList.swift; sourceTree = "<group>"; };
+		CCE8B1C21F063C9E0093B3AD /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		CCE8B1C41F063E260093B3AD /* PropertyListKeyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListKeyManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +130,6 @@
 				CCE8B1BF1F062D080093B3AD /* Models */,
 				CCE8B1BC1F062CA90093B3AD /* ViewControllers */,
 				CC98B3BD1F011095000F661C /* AppDelegate.swift */,
-				CC98B3BF1F011095000F661C /* ViewController.swift */,
 				CC98B3C11F011095000F661C /* Main.storyboard */,
 				CC98B3C41F011095000F661C /* Assets.xcassets */,
 				CC98B3C61F011095000F661C /* LaunchScreen.storyboard */,
@@ -158,6 +159,7 @@
 		CCE8B1BC1F062CA90093B3AD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CCE8B1C21F063C9E0093B3AD /* AuthViewController.swift */,
 				CCE8B1BD1F062CB90093B3AD /* MySampleListViewController.swift */,
 			);
 			path = ViewControllers;
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				CCE8B1C01F062D520093B3AD /* SampleMenuList.swift */,
+				CCE8B1C41F063E260093B3AD /* PropertyListKeyManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -356,10 +359,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC98B3C01F011095000F661C /* ViewController.swift in Sources */,
+				CCE8B1C31F063C9E0093B3AD /* AuthViewController.swift in Sources */,
 				CCE8B1BE1F062CB90093B3AD /* MySampleListViewController.swift in Sources */,
 				CCE8B1C11F062D520093B3AD /* SampleMenuList.swift in Sources */,
 				CC98B3BE1F011095000F661C /* AppDelegate.swift in Sources */,
+				CCE8B1C51F063E260093B3AD /* PropertyListKeyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
