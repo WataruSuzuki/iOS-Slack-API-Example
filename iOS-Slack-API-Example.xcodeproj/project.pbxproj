@@ -15,6 +15,8 @@
 		CC98B3C81F011095000F661C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC98B3C61F011095000F661C /* LaunchScreen.storyboard */; };
 		CC98B3D31F011096000F661C /* iOS_Slack_API_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC98B3D21F011096000F661C /* iOS_Slack_API_ExampleTests.swift */; };
 		CC98B3DE1F011096000F661C /* iOS_Slack_API_ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC98B3DD1F011096000F661C /* iOS_Slack_API_ExampleUITests.swift */; };
+		CCE8B1BE1F062CB90093B3AD /* MySampleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE8B1BD1F062CB90093B3AD /* MySampleListViewController.swift */; };
+		CCE8B1C11F062D520093B3AD /* SampleMenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE8B1C01F062D520093B3AD /* SampleMenuList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		CC98B3D91F011096000F661C /* iOS-Slack-API-ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-Slack-API-ExampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC98B3DD1F011096000F661C /* iOS_Slack_API_ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Slack_API_ExampleUITests.swift; sourceTree = "<group>"; };
 		CC98B3DF1F011096000F661C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCE8B1BD1F062CB90093B3AD /* MySampleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySampleListViewController.swift; sourceTree = "<group>"; };
+		CCE8B1C01F062D520093B3AD /* SampleMenuList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleMenuList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,8 @@
 		CC98B3BC1F011095000F661C /* iOS-Slack-API-Example */ = {
 			isa = PBXGroup;
 			children = (
+				CCE8B1BF1F062D080093B3AD /* Models */,
+				CCE8B1BC1F062CA90093B3AD /* ViewControllers */,
 				CC98B3BD1F011095000F661C /* AppDelegate.swift */,
 				CC98B3BF1F011095000F661C /* ViewController.swift */,
 				CC98B3C11F011095000F661C /* Main.storyboard */,
@@ -147,6 +153,22 @@
 				CC98B3DF1F011096000F661C /* Info.plist */,
 			);
 			path = "iOS-Slack-API-ExampleUITests";
+			sourceTree = "<group>";
+		};
+		CCE8B1BC1F062CA90093B3AD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CCE8B1BD1F062CB90093B3AD /* MySampleListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CCE8B1BF1F062D080093B3AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CCE8B1C01F062D520093B3AD /* SampleMenuList.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +357,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC98B3C01F011095000F661C /* ViewController.swift in Sources */,
+				CCE8B1BE1F062CB90093B3AD /* MySampleListViewController.swift in Sources */,
+				CCE8B1C11F062D520093B3AD /* SampleMenuList.swift in Sources */,
 				CC98B3BE1F011095000F661C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,6 +608,7 @@
 				CC98B3E41F011096000F661C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC98B3E51F011096000F661C /* Build configuration list for PBXNativeTarget "iOS-Slack-API-ExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -592,6 +617,7 @@
 				CC98B3E71F011096000F661C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC98B3E81F011096000F661C /* Build configuration list for PBXNativeTarget "iOS-Slack-API-ExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -600,6 +626,7 @@
 				CC98B3EA1F011096000F661C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
