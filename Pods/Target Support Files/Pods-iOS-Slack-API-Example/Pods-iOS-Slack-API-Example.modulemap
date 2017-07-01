@@ -1,0 +1,6 @@
+framework module Pods_iOS_Slack_API_Example {
+  umbrella header "Pods-iOS-Slack-API-Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

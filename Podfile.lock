@@ -1,0 +1,18 @@
+PODS:
+  - SlackKit (3.1.12):
+    - Starscream
+    - Swifter
+  - Starscream (2.0.4)
+  - Swifter (1.3.3)
+
+DEPENDENCIES:
+  - SlackKit
+
+SPEC CHECKSUMS:
+  SlackKit: 3c42cf3c9b52dc8e1f7370bb1b3103e8f96426be
+  Starscream: df5974ee928b157c8eda8af8de7c620276b7dfcc
+  Swifter: 3fef6ec31449a8e3a29cf8551a9fe23485f15bc0
+
+PODFILE CHECKSUM: ebf2842efc160dc4fdb9a5968a61098c669ec9b8
+
+COCOAPODS: 1.2.1
