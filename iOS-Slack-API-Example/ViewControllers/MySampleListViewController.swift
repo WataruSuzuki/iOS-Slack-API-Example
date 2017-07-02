@@ -9,16 +9,27 @@
 import UIKit
 
 class MySampleListViewController: UITableViewController {
+    
+    let slack = SlackKitHelpers.instance
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        slack.initSlackKit()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.navigationItem.title = Bundle.main.bundleIdentifier
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !slack.isSlackReady() {
+            self.performSegue(withIdentifier: "auth", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +49,6 @@ class MySampleListViewController: UITableViewController {
         return SampleMenuList.max.rawValue
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MySampleListViewCell", for: indexPath)
 
@@ -52,7 +62,18 @@ class MySampleListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let menu = SampleMenuList(rawValue: indexPath.row) {
-            self.performSegue(withIdentifier: menu.toString(), sender: self)
+            switch menu {
+            case SampleMenuList.emoji_read:
+                slack.emojiList { (response) in
+                    //https://api.slack.com/methods/emoji.list
+                    DispatchQueue.main.async(execute: {
+                        self.performSegue(withIdentifier: menu.toString(), sender: self)
+                    })
+                }
+
+            default:
+                self.performSegue(withIdentifier: menu.toString(), sender: self)
+            }
         }
     }
     /*

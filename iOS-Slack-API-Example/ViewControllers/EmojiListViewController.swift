@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import SlackKit
+import SwiftyJSON
 
 class EmojiListViewController: UITableViewController {
-
+    
+    let slack = SlackKitHelpers.instance
+    var emojiJson: JSON!
+    var emojiNameList = Array<String>()
+    var emojiUrlList = Array<String>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +25,13 @@ class EmojiListViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        emojiJson = JSON(slack.emojiResponse)
+        for (key,subJson):(String, JSON) in emojiJson {
+            print("key = \(key)")
+            emojiNameList.append(key)
+            print("subJson = \(subJson)")
+            emojiUrlList.append(subJson.stringValue)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,24 +43,51 @@ class EmojiListViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return slack.emojiResponse.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiListViewCell", for: indexPath)
 
         // Configure the cell...
+        cell.textLabel?.text = emojiNameList[indexPath.row]
+        let emojiUrl = getEmojiUrlStr(originalUrlStr: emojiUrlList[indexPath.row])
+        DispatchQueue.global(qos: .default).async {
+            if let url = URL(string: emojiUrl) {
+                do {
+                    let data = try Data(contentsOf: url)
+                    let image = UIImage(data: data)
+                    DispatchQueue.main.async(execute: {
+                        cell.imageView?.image = image
+                        cell.layoutSubviews()
+                    })
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            }
+        }
 
         return cell
     }
-    */
-
+    
+    func getEmojiUrlStr(originalUrlStr: String) -> String {
+        if originalUrlStr.hasPrefix("http") {
+            return originalUrlStr
+        }
+        let aliasStr = originalUrlStr.replacingOccurrences(of: "alias:", with: "")
+        for (index, key) in emojiNameList.enumerated() {
+            if key == aliasStr {
+                return emojiUrlList[index]
+            }
+        }
+        return "http://emoji.fileformat.info/gemoji/" + aliasStr  + ".png"
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

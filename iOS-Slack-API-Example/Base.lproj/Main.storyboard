@@ -27,6 +27,34 @@
             </objects>
             <point key="canvasLocation" x="1734" y="395"/>
         </scene>
+        <!--Emoji List View Controller-->
+        <scene sceneID="OYz-G5-9O3">
+            <objects>
+                <tableViewController storyboardIdentifier="EmojiListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AaD-ej-q5f" customClass="EmojiListViewController" customModule="iOS_Slack_API_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZTR-8z-Fyt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmojiListViewCell" id="syc-XC-SG1">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="syc-XC-SG1" id="mRQ-cT-pHK">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AaD-ej-q5f" id="Fp9-3E-h4e"/>
+                            <outlet property="delegate" destination="AaD-ej-q5f" id="8wq-F7-9kV"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="le4-pu-Mfq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1734" y="1121"/>
+        </scene>
         <!--Root View Controller-->
         <scene sceneID="4Ar-HU-0LR">
             <objects>
@@ -53,6 +81,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="gQ7-Yu-79Z"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="auth" id="dkd-w5-XBM"/>
+                        <segue destination="AaD-ej-q5f" kind="show" identifier="emoji_read" id="gVx-iC-hHu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOf-oy-JYi" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -29,4 +29,17 @@ class SlackKitHelpers: NSObject {
         slack.addWebAPIAccessWithToken(accessToken)
         api = slack.webAPI
     }
+    
+    func emojiList(successEmoji: ((_ emojiList: [String: Any]?)->Void)?) {
+        guard let api = api else {
+            print("Slack API is not available...")
+            return
+        }
+        api.emojiList(success: { (responseArray) in
+            self.emojiResponse = responseArray
+            successEmoji?(responseArray)
+        }) { (slackError) in
+            print(slackError.localizedDescription)
+        }
+    }
 }
