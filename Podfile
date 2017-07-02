@@ -5,5 +5,6 @@ target "iOS-Slack-API-Example" do
   use_frameworks!
 
   pod 'SlackKit'
+  pod 'SwiftyJSON'
 
 end

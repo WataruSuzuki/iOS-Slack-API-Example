@@ -68,16 +68,12 @@ class AuthViewController: UIViewController,
                 if let stateRange = code.range(of: "&") {
                     code = code.substring(to: stateRange.lowerBound)
                 }
-                WebAPI.oauthAccess(clientID: mySlackClientID, clientSecret: mySlackClientSecret, code: code, redirectURI: redirectUrlStr, success: { (resultDictionary) in
-                    print(resultDictionary.description)
-                    if let accessToken = resultDictionary["access_token"] as? String {
+                if let result = WebAPI.oauthAccess(clientID: mySlackClientID, clientSecret: mySlackClientSecret, code: code, redirectURI: redirectUrlStr) {
+                    if let accessToken = result["access_token"] as? String {
                         SlackKitHelpers.instance.accessToken = accessToken
                         self.dismiss(animated: true, completion: nil)
                     }
-                }, failure: { (slackError) in
-                    print(slackError)
-                })
-                
+                }
             }
         }
     }

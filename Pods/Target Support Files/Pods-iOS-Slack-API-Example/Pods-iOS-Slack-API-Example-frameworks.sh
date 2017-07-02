@@ -89,14 +89,26 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/SKClient/SKClient.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SKCore/SKCore.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SKRTMAPI/SKRTMAPI.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SKServer/SKServer.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SKWebAPI/SKWebAPI.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SlackKit/SlackKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Starscream/Starscream.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Swifter/Swifter.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/SKClient/SKClient.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SKCore/SKCore.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SKRTMAPI/SKRTMAPI.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SKServer/SKServer.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SKWebAPI/SKWebAPI.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SlackKit/SlackKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Starscream/Starscream.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Swifter/Swifter.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
